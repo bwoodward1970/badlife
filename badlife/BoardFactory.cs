@@ -8,6 +8,9 @@ using Autofac;
 
 namespace badlife
 {
+    /// <summary>
+    /// Create a Game Board in different states
+    /// </summary>
     internal class BoardFactory : IBoardFactory
     {
         private readonly IDisplayParser<int, char> _parser;
@@ -19,6 +22,11 @@ namespace badlife
             _componentContext = componentContext;
         }
 
+        /// <summary>
+        /// Create Game Board from display input
+        /// </summary>
+        /// <param name="displayValues"></param>
+        /// <returns></returns>
         public IBoard Create(char[][] displayValues)
         {
             return _componentContext
@@ -26,6 +34,12 @@ namespace badlife
                 _parser.ParseDisplayGrid(displayValues)));
         }
 
+        /// <summary>
+        /// Create Empty Game board
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="cols"></param>
+        /// <returns></returns>
         public IBoard Create(int rows, int cols)
         {
             return _componentContext

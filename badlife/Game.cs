@@ -57,7 +57,7 @@ namespace badlife
         /// </summary>
         /// <param name="board"></param>
         /// <returns></returns>
-        protected IBoard Evolve(IBoard board)
+        protected virtual IBoard Evolve(IBoard board)
         {
             var newBoard = _boardFactory.Create(board.Rows, board.Cols);
                
@@ -79,7 +79,7 @@ namespace badlife
         /// <param name="row"></param>
         /// <param name="col"></param>
         /// <returns></returns>
-        protected int GetNewState(IBoard board, int row, int col) => 
+        protected virtual int GetNewState(IBoard board, int row, int col) => 
                _gameRules.ApplyLiveRules(board[row, col], board.GetLiveNeighbours(row, col));
 
         

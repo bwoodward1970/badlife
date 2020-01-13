@@ -83,7 +83,7 @@ namespace badlife
         /// <param name="row"></param>
         /// <param name="col"></param>
         /// <returns></returns>
-        protected int RowLiveCount(int row, int col) => CountLive(row, col, PreviousPosition)
+        protected virtual int RowLiveCount(int row, int col) => CountLive(row, col, PreviousPosition)
                 + _world[row][col] + CountLive(row, col, NextPosition);
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace badlife
         /// <param name="col"></param>
         /// <param name="colOffSetter"></param>
         /// <returns></returns>
-        protected int CountLive(int row, int col, Func<int, int, int> colOffSetter) =>
+        protected virtual int CountLive(int row, int col, Func<int, int, int> colOffSetter) =>
                 _world[row][colOffSetter(col, _world[0].Length)];
                 
         /// <summary>
